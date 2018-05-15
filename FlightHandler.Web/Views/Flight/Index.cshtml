@@ -1,0 +1,39 @@
+﻿@model FlightHandler.Web.Models.FlightViewModel
+
+
+<div class="container">
+
+    <h2>Ajouter un vol</h2>
+
+    <form action="@Url.Action("InserOrEditFlight")" method="post">
+
+        <div class="form-group">
+            <label for="state_id" class="control-label">Départ</label>
+            <select class="form-control" name="DeparturAeroportId">
+                <option>Choisir un aéroport</option>
+                @foreach (var aeroport in Model.DeparturAeroports)
+                {
+                    <option value="@aeroport.Id">@aeroport.Label</option>
+                }
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="state_id" class="control-label">Arrivé</label>
+            <select class="form-control" name="ArrivalAeroportId">
+                <option>Choisir un aéroport</option>
+                @foreach (var aeroport in Model.ArrivalAeroports)
+                {
+                    <option value="@aeroport.Id">@aeroport.Label</option>
+                }
+            </select>
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Ajouter</button>
+        </div>
+
+    </form>
+
+</div>
+

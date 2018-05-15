@@ -1,0 +1,57 @@
+﻿@model FlightHandler.Web.Models.FlightViewModel
+
+
+<div class="container">
+
+    <h2>Modifier le vol</h2>
+
+    <form action="@Url.Action("InserOrEditFlight")" method="post">
+
+        <input type="hidden" name="Id" value="@Model.Id" />
+
+        <div class="form-group">
+            <label class="control-label">Départ</label>
+            <select class="form-control" name="DeparturAeroportId">
+                <option>Départ</option>
+                @foreach (var aeroport in Model.DeparturAeroports)
+                {
+                    var selected = aeroport.Id == Model.DeparturAeroportId;
+                    <option @(selected ? "selected" : string.Empty) value="@aeroport.Id">@aeroport.Label</option>
+                }
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label">Arrivé</label>
+            <select class="form-control" name="ArrivalAeroportId">
+                <option>Arrivé</option>
+                @foreach (var aeroport in Model.ArrivalAeroports)
+                {
+                    var selected = aeroport.Id == Model.ArrivalAeroportId;
+                    <option @(selected ? "selected" : string.Empty) value="@aeroport.Id">@aeroport.Label</option>
+                }
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label">Distance</label>
+            <span>@Model.DistancekilometerFormat</span>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label">Durée</label>
+            <span>@Model.DurationTimeFormat</span>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label">Consommation Fuel</label>
+            <span>@Model.FuelConsumptionLiterFormat</span>
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Méttre à jour</button>
+        </div>
+
+    </form>
+
+</div>

@@ -1,0 +1,38 @@
+﻿
+@model IEnumerable<FlightHandler.Web.Models.FlightViewModel>
+
+<div class="container">
+
+    <h2>Liste de vols</h2>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Départ</th>
+                <th>Arrivé</th>
+                <th>Distance</th>
+                <th>Durée de vol</th>
+                <th>Consommation Fuel</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.DeparturAeroportName</td>
+                        <td>@item.ArrivalAeroportName</td>
+                        <td>@item.DistancekilometerFormat</td>
+                        <td>@item.DurationTimeFormat</td>
+                        <td>@item.FuelConsumptionLiterFormat</td>
+                        <td><a href="@Url.Action("Edit", new {id = item.Id })">Modifier</a></td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+
+</div>
+
+
